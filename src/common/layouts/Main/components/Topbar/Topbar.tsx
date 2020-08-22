@@ -8,11 +8,7 @@ import IconButton from "@material-ui/core/IconButton";
 import Toolbar from "@material-ui/core/Toolbar";
 import MenuIcon from "@material-ui/icons/Menu";
 // import games91logo from "../../../../../assets/images/games91logo.png";
-import { useHistory } from "react-router-dom";
-import { Button } from "../../../../../shared/components";
-import { Typography, Grid, Badge } from "@material-ui/core";
-import InputIcon from '@material-ui/icons/Input';
-import { MESSAGES } from "../../../../utils";
+import { Typography, Grid } from "@material-ui/core";
 import { showToastr } from "../../../../actions/toastrAction";
 import { connect } from "react-redux";
 const useStyles = makeStyles((theme: any) => ({
@@ -32,7 +28,6 @@ const useStyles = makeStyles((theme: any) => ({
 }));
 
 const Topbar = (props) => {
-  const history = useHistory();
   const { className, onSidebarOpen, backColor, ...rest } = props;
 
   const classes = useStyles();
@@ -56,7 +51,7 @@ const Topbar = (props) => {
           <Hidden mdDown>
             <Typography variant="h3" className={classes.heading}>
               {" "}
-             Evalue Serve Dashboard
+              Evalue Serve Dashboard
             </Typography>
           </Hidden>
         </Grid>
@@ -72,7 +67,4 @@ const Topbar = (props) => {
 const mapDispatchToProps = (dispatch) => ({
   showToastr: (toastrObj) => dispatch(showToastr(toastrObj)),
 });
-export default connect(
-  null,
-  mapDispatchToProps
-)(Topbar);
+export default connect(null, mapDispatchToProps)(Topbar);

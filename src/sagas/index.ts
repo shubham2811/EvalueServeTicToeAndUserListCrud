@@ -1,6 +1,16 @@
 import { all } from "redux-saga/effects";
-import { getUserListSaga } from "./list/listSaga";
+import {
+  getUserListSaga,
+  addUserSaga,
+  editUserSaga,
+  deleteUserSaga,
+} from "./user/userSaga";
 
 export default function* rootSaga() {
-  yield all([getUserListSaga()]);
+  yield all([
+    getUserListSaga(),
+    addUserSaga(),
+    editUserSaga(),
+    deleteUserSaga(),
+  ]);
 }

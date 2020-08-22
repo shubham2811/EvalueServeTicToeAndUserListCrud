@@ -1,5 +1,5 @@
 import React from "react";
-import { Switch, Redirect,  } from "react-router-dom";
+import { Switch  } from "react-router-dom";
 import { connect } from "react-redux";
 import RouteWithLayout from "./RouteWithLayout";
 import { Main as MainLayout } from "./layouts";

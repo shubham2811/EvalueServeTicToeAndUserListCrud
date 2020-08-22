@@ -103,6 +103,7 @@ export const InputTextBox: React.SFC<IInputTextBoxProps> = (props) => {
       onChange={(val) => props.onChange(val)}
       fullWidth={props.fullWidth}
       className={props.className}
+      value={props.value}
       color="secondary"
       InputLabelProps={{
         shrink: props.shrink,

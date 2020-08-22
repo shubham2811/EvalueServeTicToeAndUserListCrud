@@ -6,6 +6,7 @@ import CardHeader from "@material-ui/core/CardHeader";
 import Divider from "@material-ui/core/Divider";
 import CardContent from "@material-ui/core/CardContent";
 import CardActions from "@material-ui/core/CardActions";
+// import { ReactComponent as MailPic } from "../../../assets/images/icon_mail.svg";
 import ICardListProps from "./iCardListProps";
 import Link from "@material-ui/core/Link";
 import { makeStyles } from "@material-ui/styles";
@@ -13,7 +14,14 @@ import TablePagination from "@material-ui/core/TablePagination";
 import Fab from "@material-ui/core/Fab";
 import Tooltip from "@material-ui/core/Tooltip";
 import { InputCheckBox } from "../InputCheckBox/InputCheckBox";
+import Avatar from "@material-ui/core/Avatar";
+import { Button } from "../Button/button";
+// import Avatar from "@material-ui/core/Avatar";
 const useStyles = makeStyles((theme: any) => ({
+  root: {
+    // padding: theme.spacing(4),
+    // maxWidth: 345,
+  },
   header: {
     background: theme.palette.secondary.main,
     "& > *": {
@@ -39,11 +47,6 @@ const useStyles = makeStyles((theme: any) => ({
 
 export const CardList = (props: ICardListProps) => {
   const classes = useStyles();
-  const cardHeaderClick = (event, row) => {
-    event.preventDefault();
-    props.cardHeaderClick(row);
-  };
-
   const {
     headers,
     rowData,
@@ -54,71 +57,69 @@ export const CardList = (props: ICardListProps) => {
     count,
     renderActionButtons,
     handleActionButtonClick,
-    handleRowChecked,
   } = props;
-  // console.log("props", props);
-  // console.log('headers',headers)
 
   return (
     <>
-      {rowData ? (
+      {rowData && rowData.length ? (
         <>
           {rowData.map((row: any) => {
             return (
-              <Grid item lg={12} md={12} xl={12} xs={12} key={row.id}>
+              <Grid item md={6} key={row.cell} >
                 <Card>
-                  <Link href="#" onClick={(e) => cardHeaderClick(e, row)}>
-                    <CardHeader
-                      className={classes.header}
-                      title={row.displayName}
-                    />
-                  </Link>
-
-                  <Divider />
-                  <CardContent>
-                    <Grid container spacing={2}>
-                      <Grid item>
-                        <InputCheckBox
-                          onChange={(e) => handleRowChecked(e, row)}
-                          isformfield={false}
+                  <CardContent className={classes.root} >
+                    <Grid
+                      container
+                      spacing={1}
+                      justify="flex-start"
+                      alignItems="center"
+                    >
+                      <Grid item md={3}>
+                        <Avatar
+                          className={classes.avatar}
+                          src={row.profileUrl}
                         />
                       </Grid>
-                      {headers.map(
-                        (header: {
-                          label: "";
-                          value: "";
-                          isLink: false;
-                          linkId: null;
-                        }) => {
+                      <Grid item md={8}>
+                        <Typography variant="h4" component="h4">
+                          {row.displayName}
+                        </Typography>
+                      </Grid>
+                      <Grid container spacing={1}>
+                        {headers.map((header) => {
                           return (
-                            <Grid item key={header.label}>
-                              <Tooltip
-                                title={header.label}
-                                placement="top-start"
-                                arrow
-                              >
-                                <Typography variant="h6">
-                                  {header.label}
+                            <Grid item md={6}  key={header.label} >
+                              <Grid container>
+                                <Typography
+                                  style={{ fontSize: "13px" }}
+                                  variant="body2"
+                                  color="textSecondary"
+                                  component="h5"
+                                  noWrap
+                                >
+                                  {header.label} :
                                 </Typography>
-                              </Tooltip>
-                              <Tooltip
-                                placement="bottom-start"
-                                title={
-                                  row[header.value] !== null &&
-                                  row[header.value].toString()
-                                }
-                                arrow
-                              >
-                                <Typography component="p">
-                                  {row[header.value] !== null
-                                    ? row[header.value].toString()
-                                    : null}
-                                </Typography>
-                              </Tooltip>
+
+                                <Tooltip
+                                  title={row[header.value].toString()}
+                                  placement="top-start"
+                                  arrow
+                                >
+                                  <Typography
+                                    style={{ fontSize: "11px" }}
+                                    variant="body2"
+                                    color="textSecondary"
+                                    component="h5"
+                                    noWrap
+                                  >
+                                    {row[header.value].toString()}
+                                  </Typography>
+                                </Tooltip>
+                              </Grid>
                             </Grid>
                           );
-                        }
-                      )}
+                        })}
+                      </Grid>
                     </Grid>
                   </CardContent>
                   <Divider />
@@ -134,23 +135,21 @@ export const CardList = (props: ICardListProps) => {
                           {renderActionButtons.map((button) => {
                             return (
                               <Grid item key={button.label}>
-                                <Fab
-                                  variant="extended"
+                                <Button
                                   color="primary"
-                                  aria-label="add"
                                   onClick={() =>
                                     handleActionButtonClick(row, button.label)
                                   }
                                 >
                                   {button.image}
                                   {button.label}
-                                </Fab>
+                                </Button>
                               </Grid>
                             );
                           })}
                         </Grid>
                       </CardActions>
-                    </>
+                      </>
                   ) : null}
                 </Card>
               </Grid>
