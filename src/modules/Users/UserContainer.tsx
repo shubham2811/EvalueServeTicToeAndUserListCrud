@@ -202,11 +202,6 @@ class UserContainer extends React.Component<any> {
       isFilterApplied,
       searchObj: { firstName, lastName, email },
     } = this.state;
-    // console.log('userList',userList);
-    // console.log('filteredList',filteredList);
-    // console.log('firstName',firstName);
-    // console.log(this.state.searchObj);
-
     return (
       <div className={classes.root}>
         <Grid container spacing={2} alignItems="center">

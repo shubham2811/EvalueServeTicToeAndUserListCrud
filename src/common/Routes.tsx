@@ -1,5 +1,5 @@
 import React from "react";
-import { Switch  } from "react-router-dom";
+import { Switch } from "react-router-dom";
 import { connect } from "react-redux";
 import RouteWithLayout from "./RouteWithLayout";
 import { Main as MainLayout } from "./layouts";
@@ -11,51 +11,50 @@ const routesList = [
   {
     component: TicTacContainer,
     path: "/tic-tac-toe",
-    exact : true
+    exact: true,
   },
   {
-    component:  UserContainer,
+    component: UserContainer,
     path: "/",
-    exact:true
+    exact: true,
   },
   {
-    component:  UserContainer,
+    component: UserContainer,
     path: "/users",
-    exact:true
+    exact: true,
   },
 ];
 
-const Routes = props => {
+const Routes = (props) => {
   return (
     <>
-    <Switch>
-      {routesList &&
-        routesList.map((route:any, i) => (
-          <RouteWithLayout
-            path={route.path}
-            key={i}
-            layout={MainLayout}
-            component={route.component}
-            exact={route.exact}
-          />
-        ))}
-           
-    </Switch>
-    {props.toastr.showToastr && (
+      <Switch>
+        {routesList &&
+          routesList.map((route: any, i) => (
+            <RouteWithLayout
+              path={route.path}
+              key={i}
+              layout={MainLayout}
+              component={route.component}
+              exact={route.exact}
+            />
+          ))}
+      </Switch>
+      {props.toastr.showToastr && (
         <Toastr toastr={props.toastr} closeToastr={props.closeToastr} />
       )}
-    {props.loader.showLoader && (
-       <Loader showLoader = {props.loader.showLoader} />
+      {props.loader.showLoader && (
+        <Loader showLoader={props.loader.showLoader} />
       )}
     </>
   );
 };
-const mapDispatchToProps = dispatch => ({
-  closeToastr: () => dispatch(closeToastr())
+const mapDispatchToProps = (dispatch) => ({
+  closeToastr: () => dispatch(closeToastr()),
 });
-const mapStateToProps = state => ({
+const mapStateToProps = (state) => ({
   toastr: state && state.toastr,
-  loader:state.loader
+  loader: state.loader
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Routes);

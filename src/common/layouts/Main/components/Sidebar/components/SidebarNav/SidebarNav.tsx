@@ -1,40 +1,37 @@
 import React, { forwardRef } from "react";
 import { NavLink } from "react-router-dom";
 import clsx from "clsx";
-import { makeStyles } from "@material-ui/styles";
-import { List, ListItem, Button } from "@material-ui/core";
+import makeStyles from "@material-ui/core/styles/makeStyles";
+import List from "@material-ui/core/List";
+import ListItem from "@material-ui/core/ListItem";
+import Button from "@material-ui/core/Button";
+
+
 const useStyles = makeStyles((theme: any) => ({
   item: {
     display: "flex",
     paddingTop: 0,
     paddingBottom: 0,
-    font:'Medium 30px/39px Roboto',
+    font: "Medium 30px/39px Roboto",
     letterSpacing: 0.84,
   },
   button: {
-    color: 'white',
+    color: "white",
     padding: "10px 8px",
     justifyContent: "flex-start",
     textTransform: "none",
     letterSpacing: 0,
     width: "100%",
     fontWeight: theme.typography.fontWeightMedium,
-    borderTop:'1px solid white',
-    borderBottom:'1px solid white',
-    borderRadius:'0px 0px 0px 0px',
-  
-  },
-  icon: {
-    // color: '#0B357C',
-    display: "flex",
-    alignItems: "center",
-    marginRight: theme.spacing(1),
+    borderTop: "1px solid white",
+    borderBottom: "1px solid white",
+    borderRadius: "0px 0px 0px 0px",
   },
   active: {
-    color: 'white',
-    fontWeight:'bold',
+    color: "white",
+    fontWeight: "bold",
     "& $icon": {
-      color: 'white',
+      color: "white",
     },
   },
 }));
@@ -53,11 +50,7 @@ const SidebarNav = (props) => {
     <List {...rest} className={clsx(className)}>
       {pages.map((page) => {
         return (
-          <ListItem
-            className={classes.item}
-            disableGutters
-            key={page.title}
-          >
+          <ListItem className={classes.item} disableGutters key={page.title}>
             <Button
               activeClassName={classes.active}
               className={classes.button}
@@ -68,8 +61,7 @@ const SidebarNav = (props) => {
             </Button>
           </ListItem>
         );
-      }
-      )}
+      })}
     </List>
   );
 };

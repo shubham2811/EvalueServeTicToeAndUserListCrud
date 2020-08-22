@@ -19,4 +19,6 @@ export default interface IButtonProps {
   readonly href?: any;
   readonly component?: any;
   readonly style?: any;
+  readonly activeClassName?:string;
+  readonly to?:string
 }

@@ -2,9 +2,11 @@ import { IInputTextBoxProps } from "./iInputTextBoxProps";
 import * as React from "react";
 import { Field } from "redux-form";
 import TextField from "@material-ui/core/TextField";
-import { InputAdornment, IconButton } from "@material-ui/core";
+
 import Visibility from "@material-ui/icons/Visibility";
 import VisibilityOff from "@material-ui/icons/VisibilityOff";
+import InputAdornment from "@material-ui/core/InputAdornment";
+import IconButton from "@material-ui/core/IconButton";
 /**
  *
  * Material UI text filed control
@@ -22,7 +24,7 @@ const TextBox = ({
   ...custom
 }) => {
   const [values, setValues] = React.useState<any>({
-    showPassword: false
+    showPassword: false,
   });
   const handleClickShowPassword = () => {
     setValues({ ...values, showPassword: !values.showPassword });
@@ -38,7 +40,6 @@ const TextBox = ({
       InputLabelProps={{
         shrink,
       }}
-      
       name={name}
       label={label}
       variant={variant}
@@ -48,7 +49,7 @@ const TextBox = ({
       helperText={touched && error}
       error={touched && !!error}
       margin={margin || "normal"}
-      type={type !== "file" &&  values.showPassword ? "text" : "password"}
+      type={type !== "file" && values.showPassword ? "text" : "password"}
       value={type !== "file" ? value : undefined}
       color="secondary"
       InputProps={{

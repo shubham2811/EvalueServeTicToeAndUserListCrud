@@ -1,16 +1,19 @@
 import React from "react";
 import { Link as RouterLink } from "react-router-dom";
 import clsx from "clsx";
-import { makeStyles } from "@material-ui/styles";
+
 import AppBar from "@material-ui/core/AppBar";
 import Hidden from "@material-ui/core/Hidden";
 import IconButton from "@material-ui/core/IconButton";
 import Toolbar from "@material-ui/core/Toolbar";
 import MenuIcon from "@material-ui/icons/Menu";
-// import games91logo from "../../../../../assets/images/games91logo.png";
-import { Typography, Grid } from "@material-ui/core";
+import EVSLogo from "../../../../../assets/images/evsLogo.png";
+
 import { showToastr } from "../../../../actions/toastrAction";
 import { connect } from "react-redux";
+import Grid from "@material-ui/core/Grid";
+import Typography from "@material-ui/core/Typography";
+import makeStyles from "@material-ui/core/styles/makeStyles";
 const useStyles = makeStyles((theme: any) => ({
   root: {
     boxShadow: "none",
@@ -39,7 +42,7 @@ const Topbar = (props) => {
       <Toolbar>
         <Grid item md={4}>
           <RouterLink to="/">
-            {/* <img className={classes.logo} alt="Logo" src={games91logo} /> */}
+            <img className={classes.logo} alt="Logo" src={EVSLogo} />
           </RouterLink>
         </Grid>
         <Grid

@@ -9,19 +9,6 @@ const axiosInstance = axios.create({
 const isHandlerEnabled = (config: any = {}) => {
   return config.hasOwnProperty('handlerEnabled') && !config.handlerEnabled ? false : true;
 };
-axiosInstance.interceptors.request.use((request) => requestHandler(request));
-const requestHandler = (request) => {
-
-  if (isHandlerEnabled(request)) {
-    // Modify request here
-    request.headers['AuthenticationToken'] = localStorage.getItem('authToken');
-    store.dispatch({
-      type:LoaderActionConstants.SHOW_LOADER
-  })
-  }
-  return request;
-};
-
 const errorHandler = (error) => {
   console.log(error)
   if (isHandlerEnabled(error.config)) {

@@ -4,9 +4,7 @@ import {
   maxLength,
   regexValidation,
   required,
-  fileValidation,
   minLength,
-  underAgeValidate,
 } from "./errorUtils";
 import { userInfo } from "./helpers";
 export {
@@ -16,7 +14,5 @@ export {
   regexValidation,
   maxLength,
   required,
-  fileValidation,
-  minLength,
-  underAgeValidate,
+  minLength
 };

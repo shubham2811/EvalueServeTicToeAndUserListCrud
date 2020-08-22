@@ -6,33 +6,17 @@ import Divider from "@material-ui/core/Divider";
 import CardContent from "@material-ui/core/CardContent";
 import CardActions from "@material-ui/core/CardActions";
 import ICardListProps from "./iCardListProps";
-import { makeStyles } from "@material-ui/styles";
+
 import TablePagination from "@material-ui/core/TablePagination";
 import Tooltip from "@material-ui/core/Tooltip";
 import Avatar from "@material-ui/core/Avatar";
 import { Button } from "../Button/button";
-const useStyles = makeStyles((theme: any) => ({
-  // header: {
-  //   background: theme.palette.secondary.main,
-  //   "& > *": {
-  //     "& > *": {
-  //       color: "white",
-  //     },
-  //   },
-  // },
+import makeStyles from "@material-ui/core/styles/makeStyles";
+const useStyles = makeStyles(() => ({
   avatar: {
     width: "50px",
     height: "50px",
   },
-  // icon: {
-  //   display: "flex",
-  //   alignItems: "center",
-  //   marginRight: theme.spacing(1),
-  // },
-  // viewImage: {
-  //   height: theme.spacing(45),
-  //   width: "100%",
-  // },
 }));
 
 export const CardList = (props: ICardListProps) => {
@@ -55,7 +39,7 @@ export const CardList = (props: ICardListProps) => {
         <>
           {rowData.map((row: any) => {
             return (
-              <Grid item md={6} key={row.cell} >
+              <Grid item md={6} key={row.cell}>
                 <Card>
                   <CardContent>
                     <Grid
@@ -78,7 +62,7 @@ export const CardList = (props: ICardListProps) => {
                       <Grid container spacing={1}>
                         {headers.map((header) => {
                           return (
-                            <Grid item md={6}  key={header.label} >
+                            <Grid item md={6} key={header.label}>
                               <Grid container>
                                 <Typography
                                   style={{ fontSize: "13px" }}
@@ -139,7 +123,7 @@ export const CardList = (props: ICardListProps) => {
                           })}
                         </Grid>
                       </CardActions>
-                      </>
+                    </>
                   )}
                 </Card>
               </Grid>

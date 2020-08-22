@@ -3,7 +3,7 @@ import { Field } from "redux-form";
 
 import Radio from "@material-ui/core/Radio";
 import FormControlLabel from "@material-ui/core/FormControlLabel/FormControlLabel";
-import { RadioGroup } from "@material-ui/core";
+import RadioGroup from "@material-ui/core/RadioGroup";
 
 /**
  *
@@ -11,8 +11,6 @@ import { RadioGroup } from "@material-ui/core";
  */
 
 const RadioButton = ({ name, options, handleChange, radioValue, ...rest }) => {
-
-
   return (
     <RadioGroup
       aria-label={name}
@@ -23,7 +21,7 @@ const RadioButton = ({ name, options, handleChange, radioValue, ...rest }) => {
       {options.map((item) => {
         return (
           <FormControlLabel
-          key={item.value}
+            key={item.value}
             value={item.value}
             control={<Radio />}
             label={item.label}
@@ -36,7 +34,7 @@ const RadioButton = ({ name, options, handleChange, radioValue, ...rest }) => {
 
 export const InputRadioButton: React.SFC<any> = (props) => {
   const { name, onChange, value, options } = props;
-  
+
   return !props.isformfield ? (
     <RadioGroup
       aria-label={name}
@@ -47,7 +45,7 @@ export const InputRadioButton: React.SFC<any> = (props) => {
       {options.map((item) => {
         return (
           <FormControlLabel
-          key={item.value}
+            key={item.value}
             value={item.value}
             control={<Radio />}
             label={item.label}

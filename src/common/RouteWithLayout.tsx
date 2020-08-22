@@ -1,16 +1,16 @@
-import React from 'react';
-import { Route } from 'react-router-dom';
-const RouteWithLayout = props => {
+import React from "react";
+import { Route } from "react-router-dom";
+const RouteWithLayout = (props) => {
   const { layout: Layout, component: Component, ...rest } = props;
   return (
     <Route
       {...rest}
-      render={matchProps => (
+      render={(matchProps) => (
         <Layout>
-          <Component {...matchProps}/>   
+          <Component {...matchProps} />
         </Layout>
       )}
     />
   );
 };
-export default RouteWithLayout
+export default RouteWithLayout;

@@ -1,56 +1,44 @@
-import React from 'react';
-import { Link as RouterLink } from 'react-router-dom';
-import clsx from 'clsx';
-import { makeStyles } from '@material-ui/styles';
-import { Avatar, Typography } from '@material-ui/core';
-import {userInfo} from '../../../../../../utils'
-const useStyles = makeStyles((theme:any )=> ({
+import React from "react";
+import { Link as RouterLink } from "react-router-dom";
+import clsx from "clsx";
+import makeStyles from "@material-ui/core/styles/makeStyles";
+import Avatar from "@material-ui/core/Avatar";
+import Typography from "@material-ui/core/Typography";
+const useStyles = makeStyles((theme: any) => ({
   root: {
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center',
-    minHeight: 'fit-content'
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+    minHeight: "fit-content",
   },
   avatar: {
     width: 60,
-    height: 60
+    height: 60,
   },
   name: {
-    marginTop: theme.spacing(1)
-  }
+    marginTop: theme.spacing(1),
+    color: "white",
+    fontWeight: "bold",
+  },
 }));
 
-const Profile = props => {
+const Profile = (props) => {
   const { className, ...rest } = props;
 
   const classes = useStyles();
-  const user = {
-    name: userInfo().name,
-    avatar: userInfo().profileImage,
-    bio:  "Evalue Serve"
-  };
 
   return (
-    <div 
-      {...rest}
-      className={clsx(classes.root, className)}
-    >
+    <div {...rest} className={clsx(classes.root, className)}>
       <Avatar
-        alt={userInfo().name}
+        alt={"alt"}
         className={classes.avatar}
         component={RouterLink}
-        src={user.avatar&&`data:image/png;base64, ${user.avatar}`}
         to="/dashboard"
       />
-      <Typography style={{color:"white",fontWeight:'bold'}}
-        className={classes.name}
-        variant="h6"
-      >
-       {user.name}
+      <Typography className={classes.name} variant="h6">
+        Evalueserve
       </Typography>
-      <Typography variant="body2" style={{color:'white'}}>{user.bio}</Typography>
     </div>
   );
 };
-
 export default Profile;

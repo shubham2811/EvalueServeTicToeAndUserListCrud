@@ -18,8 +18,6 @@ const useStyles = (theme: any) => ({
 class AddEditUser extends React.PureComponent<any> {
   render() {
     const { isOpen, handleClose, classes,userData,actionType,handleSubmitUser } = this.props;
-    console.log(userData)
-    console.log(actionType)
     return (
       <Modal
         handleClose={handleClose}

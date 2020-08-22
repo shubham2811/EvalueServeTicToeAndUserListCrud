@@ -4,14 +4,13 @@ import TableBody from "@material-ui/core/TableBody";
 import TableCell from "@material-ui/core/TableCell";
 import TableHead from "@material-ui/core/TableHead";
 import TableRow from "@material-ui/core/TableRow";
-import {
-  makeStyles,
-  Grid,
-  TablePagination,
-  Typography,
-  Avatar,
-} from "@material-ui/core";
+
 import { Button } from "../Button/button";
+import makeStyles from "@material-ui/core/styles/makeStyles";
+import Grid from "@material-ui/core/Grid";
+import Avatar from "@material-ui/core/Avatar";
+import TablePagination from "@material-ui/core/TablePagination";
+import Typography from "@material-ui/core/Typography";
 const useStyles = makeStyles((theme: any) => ({
   tableRow: {
     '&:nth-of-type(odd)': {

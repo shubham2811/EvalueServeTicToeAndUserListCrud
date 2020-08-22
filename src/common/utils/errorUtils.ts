@@ -1,4 +1,3 @@
-import moment from "moment";
 /* @description - Function that validates the minimum number of required characters.
  *
  * @param max - Minimum length threshold value.
@@ -37,17 +36,3 @@ export const required = (fieldLabel: string) => (value:any) => {
   return value ? undefined :  `Please Enter ${fieldLabel}`;
 };
 
-export const fileValidation = (size, regex) => (value) => {
-  const calculatedSizeInByte = 1024 * 1024 * size;
-  return value && value.length && !regex.test(value[0].name)
-    ? "File Format Not Valid"
-    : value && value.length && value[0].size > calculatedSizeInByte
-    ? `*Maximum ${size} MB limit`
-    : undefined;
-};
-
-export const underAgeValidate = (message) => (dob) => {
-  const birthDate = moment(dob);
-  const diff = moment().diff(birthDate, "years");
-  return diff < 18 ? message : undefined;
-};

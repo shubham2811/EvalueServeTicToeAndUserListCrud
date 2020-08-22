@@ -4,7 +4,6 @@ import { Field } from "redux-form";
 import TextField from "@material-ui/core/TextField";
 import MenuItem from "@material-ui/core/MenuItem";
 /**
- *
  * Material UI text filed control
  */
 const MaterialSelect = ({
@@ -43,8 +42,8 @@ const MaterialSelect = ({
       {options.map((option: any) => {
         return (
           <MenuItem key={option.id} value={option.id}>
-          {option.name}
-        </MenuItem>
+            {option.name}
+          </MenuItem>
         );
       })}
     </TextField>
@@ -65,7 +64,7 @@ export const DropDown: React.SFC<IDropdownProps> = (props) => {
     fullWidth,
     className,
     shrink,
-    value
+    value,
   } = props;
   return !isformfield ? (
     <TextField

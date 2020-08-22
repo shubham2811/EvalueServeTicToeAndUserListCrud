@@ -1,5 +1,5 @@
 /**
- * @description Action constants to be used for UserListModule and its feature
+ * @description Action constants to be used for UserModule and its feature
  *
  * format: {feature}_{action}
  */
