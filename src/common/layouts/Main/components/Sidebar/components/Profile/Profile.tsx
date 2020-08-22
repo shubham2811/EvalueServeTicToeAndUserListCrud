@@ -27,7 +27,7 @@ const Profile = props => {
   const user = {
     name: userInfo().name,
     avatar: userInfo().profileImage,
-    bio: userInfo().userRole === 'SUB_DSP' ||  userInfo().userRole === 'DSP' ? 'DSP/ASP' :  userInfo().userRole
+    bio:  "Evalue Serve"
   };
 
   return (

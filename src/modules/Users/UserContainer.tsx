@@ -4,7 +4,12 @@ import Typography from "@material-ui/core/Typography";
 import { connect } from "react-redux";
 import withStyles from "@material-ui/styles/withStyles";
 import { withRouter } from "react-router";
-import { CardList, Button, InputTextBox } from "../../shared/components";
+import {
+  CardList,
+  Button,
+  InputTextBox,
+  Tables,
+} from "../../shared/components";
 import { showToastr } from "../../common/actions/toastrAction";
 import {
   getUserList,
@@ -13,6 +18,8 @@ import {
   deleteUser,
 } from "./actions/userActionRoot";
 import AddEditUser from "./AddEditUser";
+import FormControlLabel from "@material-ui/core/FormControlLabel";
+import Switch from "@material-ui/core/Switch";
 const headers = [
   { label: "Email", value: "email" },
   { label: "Gender", value: "gender" },
@@ -32,6 +39,7 @@ class UserContainer extends React.Component<any> {
   state = {
     rowsPerPage: 10,
     pageNumber: 1,
+    showCardView: true,
     isFilterApplied: false,
     filteredList: [],
     actionType: null,
@@ -179,11 +187,16 @@ class UserContainer extends React.Component<any> {
       this.props.addUser({ ...obj, cell: Math.random() });
     }
   };
+
+  handleViewChange = (event) => {
+    this.setState({ showCardView: event.target.checked });
+  };
   render() {
     const { classes, userList } = this.props;
     const {
       filteredList,
       userData,
+      showCardView,
       showAddEditModal,
       actionType,
       isFilterApplied,
@@ -197,7 +210,7 @@ class UserContainer extends React.Component<any> {
     return (
       <div className={classes.root}>
         <Grid container spacing={2} alignItems="center">
-          <Grid item md={6} xs={"auto"} sm={"auto"}>
+          <Grid item md={3} xs={"auto"} sm={"auto"}>
             <Typography variant="h3">Users List</Typography>
           </Grid>
           <Grid item md={3} xs={12} sm={12}>
@@ -222,6 +235,19 @@ class UserContainer extends React.Component<any> {
               Add User
             </Button>
           </Grid>
+          <Grid item md={3} xs={12} sm={12}>
+            <FormControlLabel
+              control={
+                <Switch
+                  checked={showCardView}
+                  onChange={this.handleViewChange}
+                
+                />
+              }
+              label="Show Card View"
+            />
+          </Grid>
+
           <Grid item md={3} xs={12}>
             <InputTextBox
               name="firstName"
@@ -270,17 +296,31 @@ class UserContainer extends React.Component<any> {
               Search
             </Button>
           </Grid>
-          <CardList
-            rowData={isFilterApplied ? filteredList : userList}
-            headers={headers}
-            handleChangeRowsPerPage={this.handleChangeRowsPerPage}
-            handleChangePage={this.handleChangePage}
-            pageNumber={this.state.pageNumber}
-            rowsPerPage={this.state.rowsPerPage}
-            renderActionButtons={this.renderButtons()}
-            handleActionButtonClick={this.handleEditDelete}
-            count={5000}
-          />
+          {showCardView ? (
+            <CardList
+              rowData={isFilterApplied ? filteredList : userList}
+              headers={headers}
+              handleChangeRowsPerPage={this.handleChangeRowsPerPage}
+              handleChangePage={this.handleChangePage}
+              pageNumber={this.state.pageNumber}
+              rowsPerPage={this.state.rowsPerPage}
+              renderActionButtons={this.renderButtons()}
+              handleActionButtonClick={this.handleEditDelete}
+              count={5000}
+            />
+          ) : (
+            <Tables
+              rowData={isFilterApplied ? filteredList : userList}
+              headers={headers}
+              handleChangeRowsPerPage={this.handleChangeRowsPerPage}
+              handleChangePage={this.handleChangePage}
+              pageNumber={this.state.pageNumber}
+              rowsPerPage={this.state.rowsPerPage}
+              renderActionButtons={this.renderButtons()}
+              handleActionButtonClick={this.handleEditDelete}
+              count={5000}
+            />
+          )}
         </Grid>
         {showAddEditModal && (
           <AddEditUser

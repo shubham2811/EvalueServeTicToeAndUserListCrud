@@ -7,8 +7,10 @@ import { CardList } from "./CardList/cardList";
 import { Toastr } from "./Toastr/toastr";
 import Form from "./Form/form";
 import { InputRadioButton } from "./RadioButton/radioButton";
-import {InputCheckBox} from "./InputCheckBox/InputCheckBox"
+import {InputCheckBox} from "./InputCheckBox/InputCheckBox";
+import {Tables} from './Tables/tables';
 export {
+  Tables,
   Button,
   Form,
   InputTextBox,

@@ -32,7 +32,7 @@ class AddEditUser extends React.PureComponent<any> {
             <Form
               className={classes.form}
               form="userForm"
-              onSubmit={this.props.handleSubmitUser}
+              onSubmit={handleSubmitUser}
               initialValues={actionType === 'EDIT' ? userData : {}}
             >
               <Grid container spacing={2}>

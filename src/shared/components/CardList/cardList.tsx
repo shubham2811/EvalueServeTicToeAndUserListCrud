@@ -2,47 +2,37 @@ import React from "react";
 import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
 import Card from "@material-ui/core/Card";
-import CardHeader from "@material-ui/core/CardHeader";
 import Divider from "@material-ui/core/Divider";
 import CardContent from "@material-ui/core/CardContent";
 import CardActions from "@material-ui/core/CardActions";
-// import { ReactComponent as MailPic } from "../../../assets/images/icon_mail.svg";
 import ICardListProps from "./iCardListProps";
-import Link from "@material-ui/core/Link";
 import { makeStyles } from "@material-ui/styles";
 import TablePagination from "@material-ui/core/TablePagination";
-import Fab from "@material-ui/core/Fab";
 import Tooltip from "@material-ui/core/Tooltip";
-import { InputCheckBox } from "../InputCheckBox/InputCheckBox";
 import Avatar from "@material-ui/core/Avatar";
 import { Button } from "../Button/button";
-// import Avatar from "@material-ui/core/Avatar";
 const useStyles = makeStyles((theme: any) => ({
-  root: {
-    // padding: theme.spacing(4),
-    // maxWidth: 345,
-  },
-  header: {
-    background: theme.palette.secondary.main,
-    "& > *": {
-      "& > *": {
-        color: "white",
-      },
-    },
-  },
+  // header: {
+  //   background: theme.palette.secondary.main,
+  //   "& > *": {
+  //     "& > *": {
+  //       color: "white",
+  //     },
+  //   },
+  // },
   avatar: {
     width: "50px",
     height: "50px",
   },
-  icon: {
-    display: "flex",
-    alignItems: "center",
-    marginRight: theme.spacing(1),
-  },
-  viewImage: {
-    height: theme.spacing(45),
-    width: "100%",
-  },
+  // icon: {
+  //   display: "flex",
+  //   alignItems: "center",
+  //   marginRight: theme.spacing(1),
+  // },
+  // viewImage: {
+  //   height: theme.spacing(45),
+  //   width: "100%",
+  // },
 }));
 
 export const CardList = (props: ICardListProps) => {
@@ -67,7 +57,7 @@ export const CardList = (props: ICardListProps) => {
             return (
               <Grid item md={6} key={row.cell} >
                 <Card>
-                  <CardContent className={classes.root} >
+                  <CardContent>
                     <Grid
                       container
                       spacing={1}
@@ -123,7 +113,7 @@ export const CardList = (props: ICardListProps) => {
                     </Grid>
                   </CardContent>
                   <Divider />
-                  {renderActionButtons ? (
+                  {renderActionButtons && (
                     <>
                       <CardActions>
                         <Grid
@@ -150,7 +140,7 @@ export const CardList = (props: ICardListProps) => {
                         </Grid>
                       </CardActions>
                       </>
-                  ) : null}
+                  )}
                 </Card>
               </Grid>
             );
