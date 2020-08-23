@@ -33,7 +33,7 @@ const Profile = (props) => {
         alt={"alt"}
         className={classes.avatar}
         component={RouterLink}
-        to="/dashboard"
+      
       />
       <Typography className={classes.name} variant="h6">
         Evalueserve
