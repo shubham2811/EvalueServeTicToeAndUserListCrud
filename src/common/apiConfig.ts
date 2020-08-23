@@ -10,7 +10,6 @@ const isHandlerEnabled = (config: any = {}) => {
   return config.hasOwnProperty('handlerEnabled') && !config.handlerEnabled ? false : true;
 };
 const errorHandler = (error) => {
-  console.log(error)
   if (isHandlerEnabled(error.config)) {
     // Handle errors;
     store.dispatch({

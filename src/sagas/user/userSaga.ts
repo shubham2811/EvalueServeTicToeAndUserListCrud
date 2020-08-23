@@ -77,7 +77,6 @@ export function* deleteUserSaga() {
   yield takeLatest(UserActionConstants.USER_DELETE, deleteUserData);
 }
 function* deleteUserData(action) {
-  console.log(action);
   yield put({
     payload: {
       toastrMessage: MESSAGES.DELETED_SUCCESSFULLY,

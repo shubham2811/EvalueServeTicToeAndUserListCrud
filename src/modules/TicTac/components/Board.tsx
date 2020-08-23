@@ -20,7 +20,6 @@ const Board = (props) => {
   const classes = useStyles();
   const renderSquare = (i) => {
     const winLine = props.winLine;
-    console.log(winLine && winLine.includes(i));
     return (
       <Square
         key={i}
