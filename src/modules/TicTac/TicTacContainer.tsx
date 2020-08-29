@@ -5,7 +5,7 @@ import { Typography } from "@material-ui/core";
 import { Button, InputTextBox } from "../../shared/components";
 class TicTacContainer extends React.Component<any> {
   state = {
-    side: null,
+   
     tossed: 0,
     history: [
       {
@@ -94,7 +94,7 @@ class TicTacContainer extends React.Component<any> {
   tossCoin = () => {
     const landedOn = Math.round(Math.random());
     this.setState({
-      side: landedOn,
+    
       tossed: this.state.tossed + 1,
       xIsNext: landedOn === 1,
     });
@@ -105,7 +105,7 @@ class TicTacContainer extends React.Component<any> {
    */
   reset = () => {
     this.setState({
-      side: null,
+     
       tossed: 0,
       history: [
         {
@@ -144,7 +144,7 @@ class TicTacContainer extends React.Component<any> {
     const {
       history,
       stepNumber,
-      side,
+      
       tossed,
       player1,
       player2,
@@ -252,11 +252,6 @@ class TicTacContainer extends React.Component<any> {
                 <Typography variant="h5">
                   The coin has been tossed {tossed} times.
                 </Typography>
-                {/* <Typography variant="h5">
-                  {tossed > 0 && (
-                    <p>It landed on {side === 1 ? "heads" : "tails"}</p>
-                  )}
-                </Typography> */}
               </Grid>
             </Grid>
           </>

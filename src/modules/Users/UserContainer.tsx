@@ -66,12 +66,10 @@ class UserContainer extends React.Component<any> {
     });
   };
   //This function is used to search by using filter
-  getSearchResult = ()=> {
-    const {
-      searchObj,
-    } = this.state;
+  getSearchResult = () => {
+    const { searchObj } = this.state;
     const filterKeys = Object.keys(searchObj);
-   return this.props.userList.filter((eachObj) => {
+    return this.props.userList.filter((eachObj) => {
       return filterKeys.every((eachKey) => {
         if (!searchObj[eachKey].length) {
           return true; // passing an empty filter means that filter is ignored.
@@ -158,7 +156,7 @@ class UserContainer extends React.Component<any> {
     });
   };
   handleSubmitUser = (data) => {
-    this.setState({ showAddEditModal: false});
+    this.setState({ showAddEditModal: false });
     const { actionType } = this.state;
     const { firstName, lastName, email, gender, age, phone } = data;
     const obj = {
@@ -189,7 +187,6 @@ class UserContainer extends React.Component<any> {
   render() {
     const { classes } = this.props;
     const {
-      
       userData,
       showCardView,
       showAddEditModal,
@@ -230,7 +227,6 @@ class UserContainer extends React.Component<any> {
                 <Switch
                   checked={showCardView}
                   onChange={this.handleViewChange}
-                
                 />
               }
               label="Show Card View"
@@ -274,17 +270,6 @@ class UserContainer extends React.Component<any> {
               value={email}
             />
           </Grid>
-          {/* <Grid item md={2} xs={12} sm={12}>
-            <Button
-              color="primary"
-              className={classes.marginRight}
-              onClick={this.onSearchClick}
-              fullWidth
-              size="medium"
-            >
-              Search
-            </Button>
-          </Grid> */}
           {showCardView ? (
             <CardList
               rowData={this.getSearchResult()}
