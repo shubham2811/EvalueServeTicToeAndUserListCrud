@@ -5,7 +5,6 @@ import { Typography } from "@material-ui/core";
 import { Button, InputTextBox } from "../../shared/components";
 class TicTacContainer extends React.Component<any> {
   state = {
-   
     tossed: 0,
     history: [
       {
@@ -94,7 +93,6 @@ class TicTacContainer extends React.Component<any> {
   tossCoin = () => {
     const landedOn = Math.round(Math.random());
     this.setState({
-    
       tossed: this.state.tossed + 1,
       xIsNext: landedOn === 1,
     });
@@ -105,7 +103,6 @@ class TicTacContainer extends React.Component<any> {
    */
   reset = () => {
     this.setState({
-     
       tossed: 0,
       history: [
         {
@@ -125,16 +122,16 @@ class TicTacContainer extends React.Component<any> {
     this.setState({ [event.target.name]: event.target.value });
   };
 
-/**
- * Function called when both players enter their names and click on Go to Game button
- */
+  /**
+   * Function called when both players enter their names and click on Go to Game button
+   */
   goToGame = () => {
     this.setState({ isGameBegin: true });
   };
 
   /**
- * Function called when user click on exit button .Everything will be reset including playerNames
- */
+   * Function called when user click on exit button .Everything will be reset including playerNames
+   */
   exitGame = () => {
     this.setState({ isGameBegin: false, player1: "", player2: "" }, () => {
       this.reset();
@@ -144,7 +141,7 @@ class TicTacContainer extends React.Component<any> {
     const {
       history,
       stepNumber,
-      
+
       tossed,
       player1,
       player2,
@@ -219,7 +216,9 @@ class TicTacContainer extends React.Component<any> {
                   color="primary"
                   onClick={this.tossCoin}
                   fullWidth
-                  disabled={winner}
+                  disabled={["X", "O"].some((item) =>
+                    current.squares.includes(item)
+                  )}
                   size="medium"
                 >
                   Toss Coin
@@ -261,4 +260,4 @@ class TicTacContainer extends React.Component<any> {
   }
 }
 
-export default TicTacContainer
+export default TicTacContainer;
