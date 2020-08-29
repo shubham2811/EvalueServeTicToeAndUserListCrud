@@ -1,5 +1,4 @@
 import React from "react";
-import { Link as RouterLink } from "react-router-dom";
 import clsx from "clsx";
 import makeStyles from "@material-ui/core/styles/makeStyles";
 import Avatar from "@material-ui/core/Avatar";
@@ -32,8 +31,6 @@ const Profile = (props) => {
       <Avatar
         alt={"alt"}
         className={classes.avatar}
-        component={RouterLink}
-      
       />
       <Typography className={classes.name} variant="h6">
         Evalueserve

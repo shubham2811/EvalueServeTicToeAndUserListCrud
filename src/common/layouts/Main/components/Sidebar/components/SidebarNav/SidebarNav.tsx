@@ -29,10 +29,7 @@ const useStyles = makeStyles((theme: any) => ({
   },
   active: {
     color: "white",
-    fontWeight: "bold",
-    "& $icon": {
-      color: "white",
-    },
+    fontWeight: "bold"
   },
 }));
 

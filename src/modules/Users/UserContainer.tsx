@@ -74,7 +74,7 @@ class UserContainer extends React.Component<any> {
         if (!searchObj[eachKey].length) {
           return true; // passing an empty filter means that filter is ignored.
         }
-        return searchObj[eachKey].includes(eachObj[eachKey]);
+        return searchObj[eachKey] === eachObj[eachKey];
       });
     });
   };
