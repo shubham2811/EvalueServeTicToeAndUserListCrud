@@ -252,11 +252,11 @@ class TicTacContainer extends React.Component<any> {
                 <Typography variant="h5">
                   The coin has been tossed {tossed} times.
                 </Typography>
-                <Typography variant="h5">
+                {/* <Typography variant="h5">
                   {tossed > 0 && (
                     <p>It landed on {side === 1 ? "heads" : "tails"}</p>
                   )}
-                </Typography>
+                </Typography> */}
               </Grid>
             </Grid>
           </>

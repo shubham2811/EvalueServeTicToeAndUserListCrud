@@ -40,8 +40,6 @@ class UserContainer extends React.Component<any> {
     rowsPerPage: 10,
     pageNumber: 1,
     showCardView: true,
-    isFilterApplied: false,
-    filteredList: [],
     actionType: null,
     searchObj: {
       firstName: "",
@@ -67,15 +65,13 @@ class UserContainer extends React.Component<any> {
       },
     });
   };
-
   //This function is used to search by using filter
-  getSearchResult = () => {
+  getSearchResult = ()=> {
     const {
       searchObj,
-      // searchObj: { firstName, lastName, email },
     } = this.state;
     const filterKeys = Object.keys(searchObj);
-    const filteredArray = this.props.userList.filter((eachObj) => {
+   return this.props.userList.filter((eachObj) => {
       return filterKeys.every((eachKey) => {
         if (!searchObj[eachKey].length) {
           return true; // passing an empty filter means that filter is ignored.
@@ -83,7 +79,6 @@ class UserContainer extends React.Component<any> {
         return searchObj[eachKey].includes(eachObj[eachKey]);
       });
     });
-    this.setState({ filteredList: filteredArray, isFilterApplied: true });
   };
 
   setpageNumberAndRecords = (pageNumber, rowsPerPage?) => {
@@ -163,7 +158,7 @@ class UserContainer extends React.Component<any> {
     });
   };
   handleSubmitUser = (data) => {
-    this.setState({ showAddEditModal: false });
+    this.setState({ showAddEditModal: false});
     const { actionType } = this.state;
     const { firstName, lastName, email, gender, age, phone } = data;
     const obj = {
@@ -192,14 +187,13 @@ class UserContainer extends React.Component<any> {
     this.setState({ showCardView: event.target.checked });
   };
   render() {
-    const { classes, userList } = this.props;
+    const { classes } = this.props;
     const {
-      filteredList,
+      
       userData,
       showCardView,
       showAddEditModal,
       actionType,
-      isFilterApplied,
       searchObj: { firstName, lastName, email },
     } = this.state;
     return (
@@ -280,20 +274,20 @@ class UserContainer extends React.Component<any> {
               value={email}
             />
           </Grid>
-          <Grid item md={2} xs={12} sm={12}>
+          {/* <Grid item md={2} xs={12} sm={12}>
             <Button
               color="primary"
               className={classes.marginRight}
-              onClick={this.getSearchResult}
+              onClick={this.onSearchClick}
               fullWidth
               size="medium"
             >
               Search
             </Button>
-          </Grid>
+          </Grid> */}
           {showCardView ? (
             <CardList
-              rowData={isFilterApplied ? filteredList : userList}
+              rowData={this.getSearchResult()}
               headers={headers}
               handleChangeRowsPerPage={this.handleChangeRowsPerPage}
               handleChangePage={this.handleChangePage}
@@ -305,7 +299,7 @@ class UserContainer extends React.Component<any> {
             />
           ) : (
             <Tables
-              rowData={isFilterApplied ? filteredList : userList}
+              rowData={this.getSearchResult()}
               headers={headers}
               handleChangeRowsPerPage={this.handleChangeRowsPerPage}
               handleChangePage={this.handleChangePage}
